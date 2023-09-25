@@ -62,15 +62,15 @@ export default function Home() {
   const canvasRefs = useRef<(HTMLCanvasElement | null)[][]>(initRefsMetric)
 
   const onSelectCard = (cordinate: Cordinate) => () => {
+    if (cordinate.x === selectedCards[0]?.x && cordinate.y === selectedCards[0]?.y || cardMetric[cordinate.x][cordinate.y] === 0) {
+      return
+    }
     if (selectedCards.length === 2 || !selectedCards.length) {
       if (resetTimeoutRef.current) {
         clearTimeout(resetTimeoutRef.current)
       }
       setSelectedCards([cordinate])
       return 
-    }
-    if (cordinate.x === selectedCards[0].x && cordinate.y === selectedCards[0].y) {
-      return
     }
     setSelectedCards([...selectedCards, cordinate])
     if (cardMetric[selectedCards[0].x][selectedCards[0].y] === cardMetric[cordinate.x][cordinate.y]) {
