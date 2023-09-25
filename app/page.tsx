@@ -38,7 +38,7 @@ const generateMap = (min: number, max: number, amount: number) => {
 const AXIE_IMAGE_URL = `https://axiecdn.axieinfinity.com/axies/:id/axie/axie-full-transparent.png`
 
 // only allow event number
-const METRIC_SIZE = 2 
+const METRIC_SIZE = Number(process.env.NEXT_PUBLIC_METRIC_SIZE as string)
 
 type Cordinate = {
   x: number,
