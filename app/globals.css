@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.card {
+  transform: rotateY(180deg);
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
+  position: relative;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #713f12;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.8;
+  border-radius: 8px;
+}
+
+.card.card-active {
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
+  transform: rotateY(0deg);
+}
+
+.card.card-active::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.8;
+  height: 100%;
+  background-color: #713f12;
+  border-radius: 8px;
+}
